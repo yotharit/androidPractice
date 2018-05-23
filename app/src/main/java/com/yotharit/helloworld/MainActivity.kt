@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.welcome)
-//        initInstance()
+        setContentView(R.layout.activity_main)
+        initInstance()
         val display : Display = windowManager.defaultDisplay
         val size : Point = Point(0,0)
         display.getSize(size)

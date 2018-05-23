@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -86,23 +87,35 @@
         style="@style/ProgressBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="100"/>
+        />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <View
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:background="#000000"-->
+                <!--android:layout_weight="1"/>-->
+            <com.yotharit.helloworld.CustomView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="#000000"
-                android:layout_weight="1"/>
+                android:layout_height="160dp"
+                />
+            <com.yotharit.helloworld.CustomView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                app:isBlue="true"
+                />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
