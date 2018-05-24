@@ -9,6 +9,7 @@ import android.graphics.Paint
 import android.os.Build
 import android.util.AttributeSet
 import android.util.TypedValue
+import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
 
@@ -16,6 +17,7 @@ class CustomView : View {
 
     private var isBlue: Boolean = false
     private var isDown: Boolean = false
+    private lateinit var gesture: GestureDetector
 
     constructor(context: Context?) : super(context) {
         init()
@@ -54,12 +56,15 @@ class CustomView : View {
             paint.strokeWidth = px
 
             //drawLine
-            canvas.drawLine(0f,measuredHeight.toFloat(),measuredWidth.toFloat(),0f,paint)
+            canvas.drawLine(0f, measuredHeight.toFloat(), measuredWidth.toFloat(), 0f, paint)
 
         }
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
+
+        gesture.onTouchEvent(event)
+
         when (event!!.action) {
             MotionEvent.ACTION_DOWN -> {
                 isDown = true
@@ -83,7 +88,36 @@ class CustomView : View {
     }
 
     private fun init() {
+        gesture = GestureDetector(context, object : GestureDetector.OnGestureListener {
+            override fun onShowPress(e: MotionEvent?) {
+                //Do whatever you want
+                parent.requestDisallowInterceptTouchEvent(true)
+            }
 
+            override fun onSingleTapUp(e: MotionEvent?): Boolean {
+                //Action Up
+                return false
+            }
+
+            override fun onDown(e: MotionEvent?): Boolean {
+                return true
+            }
+
+            override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+                isBlue = !isBlue
+                invalidate()
+                return true
+            }
+
+            override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
+                return false
+            }
+
+            override fun onLongPress(e: MotionEvent?) {
+                //do Something
+            }
+
+        })
     }
 
     private fun initWithAttrs(attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) {

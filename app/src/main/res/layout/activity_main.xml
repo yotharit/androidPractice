@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,16 +21,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="9"
-            android:inputType="number"
-            android:background="@drawable/ninepatch_lab"/>
+            android:background="@drawable/ninepatch_lab"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextSecond"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="9"
-            android:inputType="number"
-            android:background="@drawable/ninepatch_lab"/>
+            android:background="@drawable/ninepatch_lab"
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/tvAnswer"
@@ -48,46 +49,78 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I agree"/>
+        android:text="I agree" />
 
     <RadioGroup
         android:id="@+id/rbGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:checkedButton="@+id/rbAdd"
-        >
+        android:orientation="horizontal">
+
         <RadioButton
             android:id="@+id/rbAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/plus"
-            />
+            android:text="@string/plus" />
+
         <RadioButton
             android:id="@+id/rbMinus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:text="@string/minus"/>
+            android:text="@string/minus" />
+
         <RadioButton
             android:id="@+id/rbMultiply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:text="@string/multiply"/>
+            android:text="@string/multiply" />
+
         <RadioButton
             android:id="@+id/rbDivide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:text="@string/divide"/>
+            android:text="@string/divide" />
     </RadioGroup>
 
     <ProgressBar
         style="@style/ProgressBarStyle"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include layout="@layout/sample_bar" />
+
+    <com.yotharit.helloworld.CustomViewGroup
+        android:id="@+id/ViewGroup1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+    <com.yotharit.helloworld.CustomViewGroup
+        android:id="@+id/ViewGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btn_spotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        fancy:fb_borderColor="#FFFFFF"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="#7ab800"
+        fancy:fb_focusColor="#9bd823"
+        fancy:fb_fontIconResource="&#xf04b;"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="SHUFFLE PLAY"
+        fancy:fb_textColor="#FFFFFF" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -95,54 +128,45 @@
         android:fillViewport="true">
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0dp"-->
-                <!--android:background="#000000"-->
-                <!--android:layout_weight="1"/>-->
+            android:orientation="vertical">
+
+            <com.yotharit.helloworld.CustomView
+                android:layout_width="match_parent"
+                android:layout_height="160dp" />
+
             <com.yotharit.helloworld.CustomView
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
-                />
-            <com.yotharit.helloworld.CustomView
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                app:isBlue="true"
-                />
+                app:isBlue="true" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2"
-                >
+                android:weightSum="2">
+
                 <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
-                    android:adjustViewBounds="true"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher"
                     android:layout_weight="1"
-                    android:scaleType="fitXY"/>
-                <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageButton
                     android:adjustViewBounds="true"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher"
-                    android:layout_weight="1"
                     android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher" />
+
+                <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
                     android:background="@drawable/selector_btn_default"
-                    />
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-
 
 
 </LinearLayout>

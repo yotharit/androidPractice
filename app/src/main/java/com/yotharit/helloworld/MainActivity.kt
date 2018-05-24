@@ -18,18 +18,26 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var editTextSecond: EditText
     lateinit var btnCalculate: Button
     lateinit var radioGroup: RadioGroup
+    lateinit var customViewGroup1 : CustomViewGroup
+    lateinit var customViewGroup2 : CustomViewGroup
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initInstance()
-        val display : Display = windowManager.defaultDisplay
-        val size : Point = Point(0,0)
+        val display: Display = windowManager.defaultDisplay
+        val size: Point = Point(0, 0)
         display.getSize(size)
         val width = size.x
         val height = size.y
-        Toast.makeText(this,"Width : "+width+" Height : "+height,Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Width : " + width + " Height : " + height, Toast.LENGTH_LONG).show()
+
+        customViewGroup1 = findViewById(R.id.ViewGroup1)
+        customViewGroup2 = findViewById(R.id.ViewGroup2)
+
+        customViewGroup1.setButtonText("Hello")
+        customViewGroup2.setButtonText("World!")
 
     }
 
@@ -54,7 +62,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btnCalculate = findViewById(R.id.btnCalculate)
         btnCalculate.setOnClickListener(this)
         radioGroup = findViewById(R.id.rbGroup)
-
     }
 
     override fun onClick(v: View?) {
