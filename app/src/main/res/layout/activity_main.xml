@@ -37,7 +37,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="@string/_0" />
+            android:text="@string/_0"
+            android:freezesText="true"
+            />
     </LinearLayout>
 
     <Button
@@ -47,9 +49,11 @@
         android:text="@string/calculate" />
 
     <CheckBox
+        android:id="@+id/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I agree" />
+        android:text="I agree"
+        android:checked="false"/>
 
     <RadioGroup
         android:id="@+id/rbGroup"
@@ -134,10 +138,12 @@
             android:orientation="vertical">
 
             <com.yotharit.helloworld.CustomView
+                android:id="@+id/customView1"
                 android:layout_width="match_parent"
                 android:layout_height="160dp" />
 
             <com.yotharit.helloworld.CustomView
+                android:id="@+id/customView2"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 app:isBlue="true" />

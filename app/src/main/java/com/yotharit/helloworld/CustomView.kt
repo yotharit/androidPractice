@@ -7,11 +7,14 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Build
+import android.os.Parcelable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import BundleSavedState
+import android.os.Bundle
 
 class CustomView : View {
 
@@ -127,6 +130,22 @@ class CustomView : View {
         } finally {
             a.recycle()
         }
+    }
+
+    override fun onSaveInstanceState(): Parcelable {
+        var superState :Parcelable = super.onSaveInstanceState()
+        var savedState : BundleSavedState = BundleSavedState(superState)
+        var bundle = Bundle()
+        bundle.putBoolean("isBlue",isBlue)
+        savedState.setBundle(bundle)
+        return savedState
+    }
+
+    override fun onRestoreInstanceState(state: Parcelable?) {
+        var savedState : BundleSavedState = state as BundleSavedState
+        super.onRestoreInstanceState(savedState)
+        var bundle : Bundle = savedState.getBundle()
+        isBlue = bundle.getBoolean("isBlue")
     }
 
 }
